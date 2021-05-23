@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <div id="app">
+    <!-- 这个app是拿来挂载展示的 -->
+    <h2>我是app</h2>
+  </div>
+  
+  <!-- CDN引入Vue3 -->
+  <script src="https://unpkg.com/vue@next"></script>
+  <script>
+    
+    // 1、创建一个对象，里面有template属性，赋值给why
+    const why = {
+      template:"<h2>我是why</h2>"
+    }
+
+    // 2、用Vue.createApp创建一个Vue应用，传入一个why对象，赋值给app
+    // const app = Vue.createApp(对象)
+    const pdd = Vue.createApp(why)
+
+    // 3、pdd再挂载这个对象
+    pdd.mount("#app") // 挂载
+
+    
+  </script>
+  
+</body>
+</html>
