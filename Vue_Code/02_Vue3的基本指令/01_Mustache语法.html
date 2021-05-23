@@ -1,31 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Document</title>
+	</head>
+	<body>
 
-  <div id="app"></div>
+		<div id="app"></div>
 
-  <template id="my-app">
-    <h2>{{message}}</h2>
-  </template>
+		<template id="my-app">
+			<!-- 1、mustache的基本使用 -->
+			<h2>{{message}}</h2>
+			<!-- 可以在一个标签内使用多个mustache语法 -->
+			<h2>{{message}} - {{message}}</h2>
+			<!-- 2、也可以是一个表达式 -->
+			<h2>{{counter * 10}}</h2>
+			<h2>{{message.split(" ").reverse().join(" ")}}</h2>
+			<!-- 3、也可以调用函数 -->
+			<!-- 也可以使用计算属性computed -->
+			<h2>{{getReverseMessage()}}</h2>
+			<!-- 4、还可以写三元运算符 -->
+			<h2>{{isShow?"哈哈哈":""}}</h2>
+			<button @click="toggle">点击切换</button>
+			
+			<!-- 错误用法 -->
+			<!-- <h2>{{var name = "abc"}}</h2> 赋值语句，不是表达式 -->
+			<!-- <h2>{{if(isShow) {return '哈哈哈'}}}</h2> -->
+		</template>
 
-  <script src="../js/vue.js"></script>
-  <script>
-    const App = {
-      template:"#my-app",
-      data() {
-        return {
-          message:"Hello World"
-        }
-      },
-    }
+		<script src="../js/vue.js"></script>
+		<script>
+			const App = {
+				template: "#my-app",
+				data() {
+					return {
+						message: "Hello World",
+						counter: 100,
+						isShow: true
+					}
+				},
+				methods: {
+					getReverseMessage() {
+						return this.message.split(" ").reverse().join(" ")
+					},
+					toggle() {
+						this.isShow = !this.isShow
+					}
+				}
+			}
 
-    Vue.createApp(App).mount('#app')
-  </script>
-</body>
+			Vue.createApp(App).mount('#app')
+		</script>
+	</body>
 </html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Document</title>
+	</head>
+	<body>
+		<!-- v-html 如果我们希望这个html内容可以被Vue解析出来，那么可以用v-html展示 -->
+		<div id="app"></div>
+
+		<template id="my-app">
+			<div>{{msg}}</div>
+			<div v-html="msg"></div>
+		</template>
+
+		<script src="../js/vue.js"></script>
+		<script>
+			const App = {
+				template: "#my-app",
+				data() {
+					return {
+						msg: '<span style="color: red">哈哈哈</span>'
+					}
+				},
+			}
+
+			Vue.createApp(App).mount('#app')
+		</script>
+	</body>
+</html>
