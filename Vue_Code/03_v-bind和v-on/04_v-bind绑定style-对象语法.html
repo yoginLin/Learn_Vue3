@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <div id="app"></div>
+  <!-- :style 变成模板语法了 -->
+  <template id="my-app">
+    
+    <!-- finalColor不加''的话，它是一个变量名 -->
+    <!-- 当使用短横线的时候，属性名要加''，要不然也是会报警告的，就比如说下面的font-size，或者直接用驼峰 -->
+    <div :style="{color:finalColor,'font-size':'18px'}">haha1</div>
+    <div :style="{color:finalColor,'fontSize':'18px'}">haha2</div>
+    <div :style="{color:finalColor,'fontSize': finalFontSize + 'px'}">haha3</div>
+    <div :style="finalStyleObj">haha4</div>
+    <div :style="getStyleObj()">haha5</div>
+    <!-- 加了''的话，它才是一个属性值 -->
+    <div :style="{color:'red'}">hehe</div>
+  </template>
+
+  <script src="../js/vue.js"></script>
+  <script>
+    const App = {
+      template:"#my-app",
+      data() {
+        return {
+          message:"Hello World",
+          finalColor:'red',
+          finalFontSize:50,
+          finalStyleObj:{
+            fontSize:'50px',
+            fontWeight:'700',
+            color:'red'
+          }
+        }
+      },
+      methods: {
+        getStyleObj(){
+          return {
+            fontSize:'50px',
+            fontWeight:'700',
+            color:'red'
+          }
+        }
+      },
+    }
+
+    Vue.createApp(App).mount('#app')
+  </script>
+</body>
+</html>
