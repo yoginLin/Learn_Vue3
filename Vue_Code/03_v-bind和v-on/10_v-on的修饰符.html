@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Document</title>
+	</head>
+	<body>
+
+		<div id="app"></div>
+
+		<template id="my-app">
+			<div @click="divClick">
+				<button type="button" @click="btnClick">点我啊</button>
+				<!-- .stop相当于event.stopPropagation() 能够阻止事件冒泡 -->
+				<button type="button" @click.stop="btnClick">点我啊</button>
+			</div>
+			<!-- .enter 只当按下enter键后出发 -->
+			<input type="text" @keyup.enter="enterKeyup" />
+		</template>
+
+		<script src="../js/vue.js"></script>
+		<script>
+			const App = {
+				template: "#my-app",
+				data() {
+					return {
+						message: "Hello World"
+					}
+				},
+				methods: {
+					btnClick() {
+						console.log("btnClick");
+					},
+					divClick() {
+						console.log("divClick");
+					},
+					enterKeyup() {
+						console.log("up");
+					}
+				}
+			}
+
+			Vue.createApp(App).mount('#app')
+		</script>
+	</body>
+</html>
