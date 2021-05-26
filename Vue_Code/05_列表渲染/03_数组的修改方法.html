@@ -11,24 +11,16 @@
 		<div id="app"></div>
 
 		<template id="my-app">
-			<!-- 
+			<h2>电影列表</h2>
 			<ul>
-				<li v-for="movie in movies" :key='movie'>{{movie}}</li>
-				<li v-for="(movie,index) in movies" :key='movie'>{{index + 1}} - {{movie}}</li> 
-			</ul> -->
-
-			<!--
-			<h2>个人信息</h2>
-			<ul>
-				<li v-for="value in info">{{value}}</li>
-				<li v-for="(value,key) in info">{{key}} : {{value}}</li>
-				<li v-for="(value,key,index) in info">{{index}} - {{key}} : {{value}}</li>
-			</ul> -->
-、
-			<ul>
-				<li v-for="num in 10">{{num}}</li>
-				<li v-for="(num,index) in 10">{{num}} - {{index}}</li>
+				<li v-for="movie in movies">{{movie}}</li>
 			</ul>
+			<div>
+				<input type="text" v-model="movieName" />
+			</div>
+
+			<button type="button" @click="addMovie">添加电影</button>
+			<p>{{info}}</p>
 		</template>
 
 		<script src="../js/vue.js"></script>
@@ -44,13 +36,21 @@
 							"教父",
 							"葫芦娃大战变形金刚"
 						],
-						info: {
-							name: "小花",
-							age: 18,
-							height: 1.66
-						}
+						movieName: '',
+						info: ''
 					}
 				},
+				methods: {
+					addMovie() {
+						if (this.movieName != '') {
+							this.movies.push(this.movieName)
+							this.movieName = ''
+							this.info = ''
+						} else {
+							this.info = '您的操作有误，请重新操作'
+						}
+					}
+				}
 			}
 
 			Vue.createApp(App).mount('#app')
