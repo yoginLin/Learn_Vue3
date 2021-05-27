@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Document</title>
+		<style type="text/css">
+			#shopTitle {
+				border: 1px solid #000;
+				text-align: center;
+			}
+
+			#goods_item {
+				border: 1px solid #000;
+				display: flex;
+				justify-content: space-around;
+			}
+		</style>
+	</head>
+	<body>
+
+		<div id="app"></div>
+
+		<template id="my-app">
+			<div id="shopTitle">
+				<h2>{{showName}}</h2>
+			</div>
+			<div id="goods_item" v-for="(item,index) in goods">
+				<div>商品名称：{{item.name}}</div>
+				<div>商品价格：{{item.price}}</div>
+				<div>商品数量：{{item.num}}</div>
+				<button @click="buy(index)">购买</button>
+			</div>
+		</template>
+
+		<script src="../js/vue.js"></script>
+		<script>
+			const App = {
+				template: "#my-app",
+				data() {
+					return {
+						// 店名
+						showName: '有个店名',
+						// 商品
+						goods: [{
+								name: '旺仔QQ糖',
+								price: '2',
+								num: 30
+							},
+							{
+								name: '可口可乐',
+								price: '3',
+								num: 58
+							},
+							{
+								name: '百事可乐',
+								price: '3',
+								num: 3
+							}
+						]
+					}
+				},
+				methods: {
+					buy(index) {
+						if (this.goods[index].num > 0) {
+							this.goods[index].num--
+						} else {
+							console.log("没货了，没得买了")
+						}
+					}
+				}
+			}
+			Vue.createApp(App).mount('#app')
+		</script>
+	</body>
+</html>
