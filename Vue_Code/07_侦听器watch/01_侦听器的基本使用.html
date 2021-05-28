@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Document</title>
+	</head>
+	<body>
+
+		<div id="app"></div>
+
+		<template id="my-app">
+			<!-- 1.0版本：输入完问题后点击查找答案才查找答案 -->
+			<!-- 您的问题：
+			<input type="text" v-model="question"></input>
+			<button @click="queryAnswer">查找答案</button>
+			<div>{{ answer }}</div> -->
+			
+			<!-- 2.0版本：输入问题后的同时查找答案 -->
+			您的问题：
+			<input type="text" v-model="question"></input>
+			<div>{{ answer }}</div>
+		</template>
+
+		<script src="../js/vue.js"></script>
+		<script>
+			const App = {
+				template: "#my-app",
+				data() {
+					return {
+						// 侦听question变化时，去进行一些逻辑上的处理（JavaScript，网络请求）
+						question: "",
+						answer: ""
+					}
+				},
+				// 用于监听某个数据的变化
+				watch: {
+					// question侦听的data中的属性的名称
+					// 这里有两个参数，第一个是侦听到变化后的新值newValue，第二个是变化前的oldValue
+					question(newValue, oldValue) {
+						console.log("新值：", newValue, "旧值：", oldValue);
+						this.queryAnswer();
+					}
+				},
+				methods: {
+					queryAnswer() {
+						console.log(`您的问题${this.question}的答案是哈哈哈哈`);
+						this.answer = `您的问题：${this.question}的答案是哈哈哈哈`
+
+					}
+				}
+			}
+
+			Vue.createApp(App).mount('#app')
+		</script>
+	</body>
+</html>

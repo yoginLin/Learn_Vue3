@@ -13,8 +13,16 @@
 		<!-- 计算属性更好，更优雅，性能上也有提升 -->
 		<template id="my-app">
 			<h2>{{fullName}}</h2>
-			<h2>{{result}}</h2>
-			<h2>{{reverseMessage}}</h2>
+			<h2>{{fullName}}</h2>
+			<h2>{{fullName}}</h2>
+			<h2>{{fullName}}</h2>
+			<h2>{{fullName}}</h2>
+			
+			<h2>{{getFullName()}}</h2>
+			<h2>{{getFullName()}}</h2>
+			<h2>{{getFullName()}}</h2>
+			<h2>{{getFullName()}}</h2>
+			<h2>{{getFullName()}}</h2>
 		</template>
 
 		<script src="../js/vue.js"></script>
@@ -25,23 +33,20 @@
 					return {
 						firstName: 'Kobe',
 						lastName: "Bryant",
-						score: 80,
-						message: "Hello World"
 					}
 				},
 				// 计算属性对象
 				computed: {
-					// 也可以写成fullName(){}
 					// 定义了一个计算属性，叫做fullName
 					fullName: function() {
+						console.log("computed调用啦！");
 						return this.firstName + ' ' + this.lastName;
-					},
-					result() {
-						return this.score >= 60 ? "及格" : "不及格"
-					},
-					// 计算属性具有缓存，多次使用也只会执行一次
-					reverseMessage() {
-						return this.message.split(' ').reverse().join(' ')
+					}
+				},
+				methods: {
+					getFullName() {
+						console.log("methods调用啦！");
+						return this.firstName + " " + this.lastName
 					}
 				}
 			}

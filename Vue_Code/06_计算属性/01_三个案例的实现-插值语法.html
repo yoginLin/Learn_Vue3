@@ -11,8 +11,12 @@
 		<div id="app"></div>
 
 		<template id="my-app">
-			<h2>{{message}}</h2>
+			<h2>{{ firstName + ' ' + lastName }}</h2>
+			<h2>{{ score >= 60 ? "及格" : "不及格"}}</h2>
+			<!-- 用split切割字符串，用reverse将字符串反转，用join拼接字符串 -->
+			<h2>{{ message.split(' ').reverse().join(" ")}}</h2>
 		</template>
+		<!-- 但是这样写是非常不好的，阅读性差，而且不好维护。存在缺点 -->
 
 		<script src="../js/vue.js"></script>
 		<script>
@@ -20,11 +24,13 @@
 				template: "#my-app",
 				data() {
 					return {
+						firstName: 'Kobe',
+						lastName: "Bryant",
+						score: 80,
 						message: "Hello World"
 					}
 				},
 			}
-
 			Vue.createApp(App).mount('#app')
 		</script>
 	</body>

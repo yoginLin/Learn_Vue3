@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Document</title>
+	</head>
+	<body>
+
+		<div id="app"></div>
+
+		<template id="my-app">
+			<h2>{{info.name}}</h2>
+			<!-- 改变info -->
+			<button @click="changeInfo">改变info</button>
+			<!-- 改变info里面的name -->
+			<button @click="changeInfoName">改变info.name</button>
+			<!-- 更加深度也是可以侦听的到的 -->
+			<button @click="changeInfoNbaName">改变info.name.nba</button>
+		</template>
+
+		<script src="../js/vue.js"></script>
+		<script>
+			const App = {
+				template: "#my-app",
+				data() {
+					return {
+						info: {
+							name: 'why',
+							age: 18,
+							nba: {
+								name: "xiaoming"
+							}
+						}
+					}
+				},
+				watch: {
+					"info.name": function(newName, oldName) {
+						console.log(newName, oldName);
+					}
+				},
+				methods: {
+					changeInfo() {
+						this.info = {
+							name: "kobe"
+						}
+					},
+					changeInfoName() {
+						this.info.name = "kobe"
+					},
+					changeInfoNbaName() {
+						this.info.nba.name = "xiaohong"
+					}
+				},
+				created() {
+					// 第一个参数是侦听的属性，第二个是回调函数，第三个是配置选项
+					const unwatch = this.$watch("info", function(newInfo, oldInfo) {
+						console.log(newInfo, oldInfo);
+					}, {
+						deep: true,
+						immediate: true
+					})
+					
+					// 当调用unwatch方法时，可以取消侦听器
+					// unwatch()
+				}
+			}
+			Vue.createApp(App).mount('#app')
+		</script>
+	</body>
+</html>

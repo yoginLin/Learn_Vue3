@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Document</title>
+	</head>
+	<body>
+
+		<div id="app"></div>
+
+		<template id="my-app">
+			<h2>{{info.name}}</h2>
+			<!-- 改变info -->
+			<button @click="changeInfo">改变info</button>
+			<!-- 改变info里面的name -->
+			<button @click="changeInfoName">改变info.name</button>
+			<!-- 更加深度也是可以侦听的到的 -->
+			<button @click="changeInfoNbaName">改变info.nba.name</button>
+		</template>
+
+		<script src="../js/vue.js"></script>
+		<script>
+			const App = {
+				template: "#my-app",
+				data() {
+					return {
+						info: {
+							name: 'why',
+							age: 18,
+							nba: {
+								name: "xiaoming"
+							}
+						}
+					}
+				},
+				watch: {
+					// 默认情况下，侦听器只会侦听数据本身的改变，对于内部发生的改变不能侦听
+					// info(newInfo, oldInfo) {
+					// 	console.log("newValue:", newInfo, "oldValue:", oldInfo);
+					// }
+
+					// 深度侦听/立即执行
+					info: {
+						// 这种写法相当于上面那种写法，上面那种是下面这种的语法糖
+						handler: function(newInfo, oldInfo) {
+							console.log("newValue:", newInfo, "oldValue:", oldInfo);
+						},
+						// 但是这种写法可以加一个deep属性，代表深度侦听
+						deep: true,
+						// 还可以加一个immediate属性，表示立即执行(一定会执行一次)
+						immediate: true
+					},
+					"info.name": function(newName, oldName) {
+						console.log(newName, oldName);
+					},
+					"friends[0].name": function(newName, oldName) {
+						console.log(newName, oldName);
+					},
+					// friends: {
+					//   handler(newFriends, oldFriend) {
+					//   },
+					//   deep: true
+					// }
+				},
+				methods: {
+					changeInfo() {
+						this.info = {
+							name: "kobe"
+						}
+					},
+					changeInfoName() {
+						this.info.name = "kobe"
+					},
+					changeInfoNbaName() {
+						this.info.nba.name = "xiaohong"
+					}
+				}
+			}
+			Vue.createApp(App).mount('#app')
+		</script>
+	</body>
+</html>

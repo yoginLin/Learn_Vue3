@@ -11,18 +11,34 @@
 		<div id="app"></div>
 
 		<template id="my-app">
-			<h2>{{message}}</h2>
+			<h2>{{ getFullName() }}</h2>
+			<h2>{{ getResult() }}</h2>
+			<h2>{{ getReverseMessage() }}</h2>
 		</template>
-
+		<!-- 这种写法虽然相比第一种来说阅读性较好，但是还不够直观，而且当多次调用时，方法也会被多次调用，没有缓存 -->
 		<script src="../js/vue.js"></script>
 		<script>
 			const App = {
 				template: "#my-app",
 				data() {
 					return {
+						firstName: 'Kobe',
+						lastName: "Bryant",
+						score: 80,
 						message: "Hello World"
 					}
 				},
+				methods: {
+					getFullName() {
+						return this.firstName + ' ' + this.lastName
+					},
+					getResult() {
+						return this.score >= 60 ? "及格" : "不及格"
+					},
+					getReverseMessage() {
+						return this.message.split(' ').reverse().join(" ");
+					}
+				}
 			}
 
 			Vue.createApp(App).mount('#app')

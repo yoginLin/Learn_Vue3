@@ -12,9 +12,8 @@
 		<!-- 计算属性具有缓存，多次使用也只会执行一次 -->
 		<!-- 计算属性更好，更优雅，性能上也有提升 -->
 		<template id="my-app">
+			<button @click="changeFullName">点击修改fullName</button>
 			<h2>{{fullName}}</h2>
-			<h2>{{result}}</h2>
-			<h2>{{reverseMessage}}</h2>
 		</template>
 
 		<script src="../js/vue.js"></script>
@@ -25,23 +24,32 @@
 					return {
 						firstName: 'Kobe',
 						lastName: "Bryant",
-						score: 80,
-						message: "Hello World"
 					}
 				},
 				// 计算属性对象
 				computed: {
-					// 也可以写成fullName(){}
-					// 定义了一个计算属性，叫做fullName
-					fullName: function() {
-						return this.firstName + ' ' + this.lastName;
-					},
-					result() {
-						return this.score >= 60 ? "及格" : "不及格"
-					},
-					// 计算属性具有缓存，多次使用也只会执行一次
-					reverseMessage() {
-						return this.message.split(' ').reverse().join(' ')
+					// 当你跟的是一个函数的时候，默认调用的是getter方法,并将最终的结果返回
+					// fullName: function() {
+					// 	return this.firstName + ' ' + this.lastName;
+					// }
+
+					// fullName的getter和setter方法
+					fullName: {
+						get: function() {
+							return this.firstName + ' ' + this.lastName;
+						},
+						// set写法比较少见，一般只写get方法
+						set: function(newValue) {
+							console.log(newValue);
+							const name = newValue.split(" ");
+							this.firstName = name[0];
+							this.lastName = name[1];
+						}
+					}
+				},
+				methods: {
+					changeFullName() {
+						this.fullName = "Coder Why";
 					}
 				}
 			}
