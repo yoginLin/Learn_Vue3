@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title></title>
+	</head>
+	<body>
+		<!-- 或者借助一些库 -->
+		<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+
+		<!-- 1、对象的引用赋值 -->
+		<script>
+			// 对象是引用类型
+			// const info = {
+			// 	name: "why",
+			// 	age: 18
+			// };
+			// const obj = info;
+			// info.name = "kobe";
+			// console.log(obj.name);
+		</script>
+
+		<!-- 2、对象的浅拷贝 -->
+		<script>
+			const info1 = {
+				name: "why",
+				age: 18,
+				friend: {
+					name: "yogin"
+				}
+			}
+			// lodash
+			const obj1 = _.clone(info1);
+
+			// Object.assign() 方法用于将所有可枚举属性的值从一个或多个源对象复制到目标对象
+			// const obj1 = Object.assign({}, info);
+			// ----------------------------------------------------------------------
+			// info1.name = 'kobe';
+			// console.log("obj:", obj1.name);
+			// console.log("info:", info1.name);
+
+			// info1.friend.name = 'lin'
+			// console.log("obj:", obj1.friend.name);
+			// console.log("info1:", info1.friend.name);
+		</script>
+
+		<!-- 3、对象的深拷贝 -->
+		<script>
+			const info = {
+				name: "why",
+				age: 18,
+				friend: {
+					name: "Kobe"
+				}
+			};
+
+			const obj = _.cloneDeep(info);
+
+			// JSON.stringify() 将对象转成字符串
+			// JSON.parse() 将字符串还原成对象，会在内存中生成一个新的对象
+			// const obj = JSON.parse(JSON.stringify(info));
+			info.friend.name = "james"
+			console.log("obj:", obj.friend.name);
+			console.log("info:", info.friend.name);
+		</script>
+	</body>
+</html>

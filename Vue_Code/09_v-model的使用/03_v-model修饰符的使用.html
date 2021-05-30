@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Document</title>
+	</head>
+	<body>
+
+		<div id="app"></div>
+
+		<template id="my-app">
+			<!-- .lazy 修饰符 -->
+			<!-- 我们一输入，h2就会立马修改，如果我们不希望立马修改的话，可以用.lazy修饰符 -->
+			<!-- 跟上.lazy修饰符后，输入不会立马修改，点击回车才会修改 -->
+			<!-- <input type="text" v-model.lazy="message"> -->
+
+			<!-- .number 修饰符 -->
+			<!-- 如果不加.number，当你一输入，立马就会变成string类型，就算设置type="number"也是没用的 -->
+			<!-- <input type="text" v-model="message"> -->
+			<!-- <input type="number" v-model="message"> -->
+			<!-- <input type="number" v-model.number="message"> -->
+			<!-- <h2>{{message}}</h2> -->
+			<!-- <button @click="showType">查看类型</button> -->
+
+			<!-- .trim 修饰符 -->
+			<!-- .trim修饰符可以清除掉输入框中的前后空格 -->
+			<!-- <input type="text" v-model="text"> -->
+			<input type="text" v-model.trim="text">
+			<button @click="showText">查看结果</button>
+		</template>
+
+		<script src="../js/vue.js"></script>
+		<script>
+			const App = {
+				template: "#my-app",
+				data() {
+					return {
+						message: 0,
+						text: "helloworld"
+					}
+				},
+				methods: {
+					showType() {
+						console.log(this.message, ",", typeof(this.message));
+					},
+					showText() {
+						console.log(this.text);
+					}
+				}
+			}
+
+			Vue.createApp(App).mount('#app')
+		</script>
+	</body>
+</html>
