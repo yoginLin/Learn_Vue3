@@ -1,3 +1,6 @@
+// 导入，让其产生依赖
+import "../css/title.less";
+
 const divEl = document.createElement("div");
 divEl.className = "title";
 divEl.innerHTML = "你好啊，李银河";
