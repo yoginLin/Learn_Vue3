@@ -1,0 +1,14 @@
+.title {
+  color: red;
+  font-weight: 700;
+  font-size: 30px;
+}
+
+/* 现在在src目录下确确实实有css文件了，但是还没有被打包 */
+/* 这个时候打包就会发现报错了，报了个
+    You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file.
+   的错，webpack默认认识js，但是不认识css，所以要安装一个css的loader
+   什么是loader呢？loader就可以帮助我们对模块源代码进行转化（解析），处理webpack不知道怎么加载的文件
+    下载css-loader：npm install css-loader -D
+    安装成功后，别急着打包，还得配置，OK，我们跳到webpack.config.js
+*/
