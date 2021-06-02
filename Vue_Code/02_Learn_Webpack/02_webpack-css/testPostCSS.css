@@ -1,0 +1,12 @@
+/* 
+  PostCSS能为CSS提供额外的功能，比如做一些兼容性的东西
+  用PostCSS可以给一些样式添加浏览器前缀
+  首先安装PostCSS：npm install postcss postcss-cli -D
+  当然只安装PostCSS还是不够的，它相当于一个平台，和webpack一样，需要loader才能工作，但是在这里不叫loader，叫plugin（插件）
+  安装 autoprefixer ：npm install autoprefixer -D
+  autoprefixer可以自动为我们的CSS样式添加浏览器前缀
+  然后指定我们的插件：npx postcss --use autoprefixer -o test.css（输出）testPostCSS.css(输入)
+ */
+.title {
+  user-select: none;
+}

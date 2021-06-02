@@ -2,6 +2,8 @@
   color: red;
   font-weight: 700;
   font-size: 30px;
+
+  user-select: none;
 }
 
 /* 现在在src目录下确确实实有css文件了，但是还没有被打包 */
