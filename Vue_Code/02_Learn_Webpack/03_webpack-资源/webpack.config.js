@@ -5,6 +5,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "./build"),
     filename: "bundle.js",
+    publicPath: '/',
   },
   module: {
     rules: [
@@ -26,7 +27,8 @@ module.exports = {
       {
         // ?表示0个或者1个
         test:/\.(jpe?g|png|gif|svg)$/,
-        use:"file-loader"
+        use:"file-loader",
+				// 搞定之后再次打包，build文件下会出现一张图片，名字是一串字符
       }
     ],
   },
