@@ -56,6 +56,11 @@ module.exports = {
         test: /\.less$/,
         use: ["style-loader", "css-loader", "less-loader"],
       },
+      // 写到一起的写法
+      {
+        test: /\.(less|css)$/,
+        use: ["style-loader", "css-loader", "less-loader"],
+      },
     ],
   },
 };

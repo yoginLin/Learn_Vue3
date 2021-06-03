@@ -1,10 +1,10 @@
-.title {
+/* .title {
   color: red;
   font-weight: 700;
   font-size: 30px;
 
   user-select: none;
-}
+} */
 
 /* 现在在src目录下确确实实有css文件了，但是还没有被打包 */
 /* 这个时候打包就会发现报错了，报了个
@@ -14,3 +14,16 @@
     下载css-loader：npm install css-loader -D
     安装成功后，别急着打包，还得配置，OK，我们跳到webpack.config.js
 */
+
+
+/* 
+  postcss-preset-env 可以将css的一些新特性转化，让浏览器都能看懂
+  可以看到 #12345678被转化成对应的rgba值
+*/
+.title {
+  color: #12345678;
+  font-weight: 700;
+  font-size: 30px;
+
+  user-select: none;
+}
