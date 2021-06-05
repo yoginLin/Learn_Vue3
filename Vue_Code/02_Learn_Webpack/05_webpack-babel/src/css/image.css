@@ -1,0 +1,12 @@
+.image-bg {
+	background-image: url("../img/nhlt.jpg");
+	width: 200px;
+	height: 200px;
+	background-size: contain;
+}
+
+/* 为了让图片可以打包，我们要让它有联系 */
+/* 
+ 这时候我们会发现报错，这是因为我们没有对图片文件进行解析的loader
+ 我们安装一个file-loader，再对它进行配置
+ */
