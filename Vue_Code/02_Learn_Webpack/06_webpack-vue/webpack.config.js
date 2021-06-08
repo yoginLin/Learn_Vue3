@@ -7,6 +7,7 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { DefinePlugin } = require('webpack')
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const { VueLoaderPlugin } = require('vue-loader/dist/index');
 
 module.exports = {
   /* 设置模式：开发者模式(注意要加双引号)
@@ -94,6 +95,12 @@ module.exports = {
       {
         test: /\.js$/,
         use: "babel-loader"
+      },
+      // .vue文件
+      {
+        test: /\.vue$/,
+        use: "vue-loader"
+        // npm i @vue/compiler-sfc
       }
     ],
   },
@@ -112,7 +119,12 @@ module.exports = {
     }),
     // 配置路径变量
     new DefinePlugin({
-      BASE_URL:"'./'"
+      BASE_URL:"'./'",
+      // __VUE_OPTIONS_API__:对vue2做适配的,默认为true，如果你没有用到的话，vue会在警告中建议你自己配置true不true
+      // __VUE_PROD_DEVTOOLS__:Vue的调试工具，在开发阶段时可以设置为true，但是在生产阶段用不上，可以设置为false，vue会在警告中建议你自己配置
+      __VUE_OPTIONS_API__:true,
+      __VUE_PROD_DEVTOOLS__:false
+      // 这时候就没有警告了
     }),
     // npm install copy-webpack-plugin -D 有时候我们想把项目中的一些东西复制到打包的文件夹中，就可以用这个插件
     new CopyWebpackPlugin({
@@ -128,6 +140,7 @@ module.exports = {
           ]
         }
       }]
-    })
+    }),
+    new VueLoaderPlugin()
   ]
 };
