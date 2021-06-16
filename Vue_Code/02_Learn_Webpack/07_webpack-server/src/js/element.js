@@ -29,7 +29,7 @@ document.body.appendChild(bgDivEl);
 document.body.appendChild(imgEl);
 document.body.appendChild(iEl);
 
-console.log("o((>ω< ))o");
+console.log("o((>ω< ))o 早~");
 /* 
   模块的热替换（HMR）：一个文件就是一个模块
     现在我们修改代码，浏览器能及时更新我们的页面
