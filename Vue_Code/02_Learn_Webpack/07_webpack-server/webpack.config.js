@@ -18,15 +18,18 @@ module.exports = {
   devServer:{
     contentBase: "./public", // 如果有一些资源我们不希望在开发时随便做复制，等生产阶段再做复制的话，就可以设置这个contentBase
     hot:true,  // 如果要想达到模块热替换，首先得设置这个东西
-    // host:"0.0.0.0",
-    port:7777,
-    open:true,
-    // compress:true
-    // proxy:{
+    // host:"0.0.0.0", // 修改主机地址
+    port:7777, //端口号修改
+    open:true, // 是否打开浏览器 同 "serve": "webpack serve --open"
+    // compress:true // 进行gzip压缩，这个开不开都可以
+    proxy:{ // 开发阶段解决跨域问题
+    // "/api":"http://localhost:8888"
+    // "/api":{
     //   target:"http://localhost:8888",
     //   pathRewrite:{
     //     "^/api":""
     //   },
+    // }
     //   secure:false, // 默认为true，即使没有证书也可以正确代理
     //   changeOrigin:true // 修改源
     // }
