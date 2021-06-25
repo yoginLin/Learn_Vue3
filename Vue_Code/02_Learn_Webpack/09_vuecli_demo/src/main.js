@@ -1,7 +1,7 @@
-import { createApp } from 'vue'
-import App from './App.vue'
+import { createApp } from "vue";
+import App from "./App.vue";
 
-createApp(App).mount('#app')
+createApp(App).mount("#app");
 
 /*
   前面我们学习了如何通过webpack配置Vue的开发环境，但是在真实的开发中我们是不可能每一个项目都从头开始完成webpack的配置
@@ -21,6 +21,4 @@ createApp(App).mount('#app')
       github上有许多例子
 
   ④ 当我们用脚手架创建好一个项目的时候，脚手架会默认把vue的环境给我们搭好，我们只要用就行了，方便了我们开发
-
-  44:34
 */
