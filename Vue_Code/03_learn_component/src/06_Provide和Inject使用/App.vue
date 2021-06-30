@@ -25,7 +25,7 @@ import { computed } from "vue"
 export default {
   components: { Home },
   /* provide:{
-      // 写了provide就表示已经在提供数据了 31.15
+      // 写了provide就表示已经在提供数据了 31：15
       name:'why',age:18
     }, */
   provide() {
