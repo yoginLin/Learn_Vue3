@@ -1,4 +1,4 @@
-<template>
+ <template>
   <div>
     <h2>HomeContent</h2>
     <p>{{ name }} -- {{ age }} -- {{ length.value }}</p>
