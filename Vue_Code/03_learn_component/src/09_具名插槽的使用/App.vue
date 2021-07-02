@@ -9,8 +9,8 @@
       <template v-slot:center>
         <h2>我是中间的标题</h2>
       </template>
-
-      <template v-slot:right>
+      <!-- v-slot可以换成 # -->
+      <template #right>
         <i>右边的i元素</i>
       </template>
 
@@ -18,6 +18,7 @@
       <template v-slot:[name]>
         <i>why元素</i>
       </template>
+
     </nav-bar>
   </div>
 </template>
