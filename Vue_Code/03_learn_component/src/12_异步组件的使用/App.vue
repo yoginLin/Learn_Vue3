@@ -1,16 +1,16 @@
 <template>
   <div>
     App组件
-    32:44
+    <home></home>
   </div>
 </template>
 
 <script>
-  export default {
-    
-  }
+import Home from "./Home.vue";
+export default {
+  components: { Home },
+};
 </script>
 
 <style scoped>
-
 </style>
