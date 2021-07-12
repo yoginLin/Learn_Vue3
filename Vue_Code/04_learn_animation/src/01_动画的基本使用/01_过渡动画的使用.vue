@@ -31,21 +31,25 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 #main {
   padding: 50px;
 }
-
+/* 如果你加了transition，Vue会检测你有没有相关class */
+/* 从什么地方进入 */
 .why-enter-from,
 .why-leave-to {
   opacity: 0;
 }
+/* 到什么地方离开 */
 .why-enter-to,
 .why-leave-from {
   opacity: 1;
 }
+/* 怎么走（进行） */
 .why-enter-active,
 .why-leave-active {
+  /* transition: 要过度的属性 过度的时间 怎么过度（先慢后快/先快后慢）; */
   transition: opacity 1s;
 }
 </style>
