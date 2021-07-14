@@ -14,27 +14,27 @@
 </template>
 
 <script>
-import { NButton, NSwitch } from "naive-ui";
+import { NButton, NSwitch } from 'naive-ui'
 import Home from './pages/Home.vue'
 import About from './pages/About.vue'
 export default {
   data() {
     return {
       isShow: true,
-    };
+    }
   },
   components: {
     NButton,
     NSwitch,
     Home,
-    About
+    About,
   },
   methods: {
     handleChange() {
-      this.isShow = !this.isShow;
+      this.isShow = !this.isShow
     },
   },
-};
+}
 </script>
 
 <style scoped>
