@@ -11,57 +11,57 @@
 </template>
 
 <script>
-import { NButton, NSwitch } from "naive-ui";
-export default {
-  data() {
-    return {
-      isShow: true,
-    };
-  },
-  components: {
-    NButton,
-    NSwitch,
-  },
-  methods: {
-    handleChange() {
-      this.isShow = !this.isShow;
+  import { NButton, NSwitch } from 'naive-ui'
+  export default {
+    data() {
+      return {
+        isShow: true,
+      }
     },
-  },
-};
+    components: {
+      NButton,
+      NSwitch,
+    },
+    methods: {
+      handleChange() {
+        this.isShow = !this.isShow
+      },
+    },
+  }
 </script>
 
 <style scoped>
-#main {
-  /* padding: 50px; */
-  width: 50vw;
-  height: 100vh;
-  margin: 40vh auto;
-  text-align: center;
-}
-
-.title {
-  display: inline-block;
-}
-
-.why-enter-active {
-  animation: bounce 1s ease;
-}
-
-.why-leave-active {
-  animation: bounce 1s ease reverse;
-}
-
-@keyframes bounce {
-  0% {
-    transform: scale(0);
+  #main {
+    /* padding: 50px; */
+    width: 50vw;
+    height: 100vh;
+    margin: 40vh auto;
+    text-align: center;
   }
 
-  50% {
-    transform: scale(1.2);
+  .title {
+    display: inline-block;
   }
 
-  100% {
-    transform: scale(1);
+  .why-enter-active {
+    animation: bounce 1s ease;
   }
-}
+
+  .why-leave-active {
+    animation: bounce 1s ease reverse;
+  }
+
+  @keyframes bounce {
+    0% {
+      transform: scale(0);
+    }
+
+    50% {
+      transform: scale(1.2);
+    }
+
+    100% {
+      transform: scale(1);
+    }
+  }
 </style>

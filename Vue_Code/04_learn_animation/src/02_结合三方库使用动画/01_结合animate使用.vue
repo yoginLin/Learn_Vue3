@@ -16,20 +16,20 @@
   </div>
 </template>
 <script>
-import { NButton, NSwitch } from 'naive-ui'
-export default {
-  components: { NButton, NSwitch },
-  data() {
-    return {
-      isShow: false,
-    }
-  },
-  methods: {
-    handleChange() {
-      this.isShow = !this.isShow
+  import { NButton, NSwitch } from 'naive-ui'
+  export default {
+    components: { NButton, NSwitch },
+    data() {
+      return {
+        isShow: false,
+      }
     },
-  },
-}
+    methods: {
+      handleChange() {
+        this.isShow = !this.isShow
+      },
+    },
+  }
 </script>
 <style scoped>
   #main {

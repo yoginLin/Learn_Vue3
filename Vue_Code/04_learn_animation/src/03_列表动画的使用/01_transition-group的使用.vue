@@ -13,33 +13,33 @@
 </template>
 
 <script>
-import _ from 'lodash'
-export default {
-  data() {
-    return {
-      numbers: [0, 1, 2, 3, 4, 5, 6, 7],
-      numCounter: 0,
-    }
-  },
-  created() {
-    this.numCounter = this.numbers.length
-  },
-  methods: {
-    addNum() {
-      // this.numbers.push(this.numCounter++)
-      this.numbers.splice(this.randomIndex(), 0, this.numCounter++)
+  import _ from 'lodash'
+  export default {
+    data() {
+      return {
+        numbers: [0, 1, 2, 3, 4, 5, 6, 7],
+        numCounter: 0,
+      }
     },
-    removeNum() {
-      this.numbers.splice(this.randomIndex(), 1)
+    created() {
+      this.numCounter = this.numbers.length
     },
-    shuffleNum() {
-      this.numbers = _.shuffle(this.numbers)
+    methods: {
+      addNum() {
+        // this.numbers.push(this.numCounter++)
+        this.numbers.splice(this.randomIndex(), 0, this.numCounter++)
+      },
+      removeNum() {
+        this.numbers.splice(this.randomIndex(), 1)
+      },
+      shuffleNum() {
+        this.numbers = _.shuffle(this.numbers)
+      },
+      randomIndex() {
+        return Math.floor(Math.random() * this.numbers.length)
+      },
     },
-    randomIndex() {
-      return Math.floor(Math.random() * this.numbers.length)
-    },
-  },
-}
+  }
 </script>
 
 <style scoped>

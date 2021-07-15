@@ -17,42 +17,42 @@
 </template>
 
 <script>
-import gsap from 'gsap'
-export default {
-  data() {
-    return {
-      names: ['asd', 'qwe', 'tsa', 'sda', 'vzc', 'ter', 'gls'],
-      keyword: '',
-    }
-  },
-  computed: {
-    showNames() {
-      return this.names.filter((item) => item.indexOf(this.keyword) !== -1)
+  import gsap from 'gsap'
+  export default {
+    data() {
+      return {
+        names: ['asd', 'qwe', 'tsa', 'sda', 'vzc', 'ter', 'gls'],
+        keyword: '',
+      }
     },
-  },
-  methods: {
-    beforeEnter(el) {
-      el.style.opacity = 0
-      el.style.height = 0
+    computed: {
+      showNames() {
+        return this.names.filter((item) => item.indexOf(this.keyword) !== -1)
+      },
     },
-    enter(el, done) {
-      gsap.to(el, {
-        opacity: 1,
-        height: '1.5em',
-        delay: el.dataset.index * 0.4,
-        onComplete: done,
-      })
+    methods: {
+      beforeEnter(el) {
+        el.style.opacity = 0
+        el.style.height = 0
+      },
+      enter(el, done) {
+        gsap.to(el, {
+          opacity: 1,
+          height: '1.5em',
+          delay: el.dataset.index * 0.4,
+          onComplete: done,
+        })
+      },
+      leave(el, done) {
+        gsap.to(el, {
+          opacity: 0,
+          height: 0,
+          delay: el.dataset.index * 0.4,
+          onComplete: done,
+        })
+      },
     },
-    leave(el, done) {
-      gsap.to(el, {
-        opacity: 0,
-        height: 0,
-        delay: el.dataset.index * 0.4,
-        onComplete: done,
-      })
-    },
-  },
-}
+  }
 </script>
 
 <style scoped>

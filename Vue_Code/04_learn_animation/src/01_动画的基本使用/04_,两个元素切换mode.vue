@@ -14,69 +14,68 @@
 </template>
 
 <script>
-import { NButton, NSwitch } from "naive-ui";
-export default {
-  data() {
-    return {
-      isShow: true,
-    };
-  },
-  components: {
-    NButton,
-    NSwitch,
-  },
-  methods: {
-    handleChange() {
-      this.isShow = !this.isShow;
+  import { NButton, NSwitch } from 'naive-ui'
+  export default {
+    data() {
+      return {
+        isShow: true,
+      }
     },
-  },
-};
+    components: {
+      NButton,
+      NSwitch,
+    },
+    methods: {
+      handleChange() {
+        this.isShow = !this.isShow
+      },
+    },
+  }
 </script>
 
 <style scoped>
-#main {
-  width: 50vw;
-  height: 100vh;
-  margin: 40vh auto;
-  text-align: center;
-}
-
-.title {
-  display: inline-block;
-}
-
-.why-enter-from,
-.why-leave-to {
-  opacity: 0;
-}
-
-/* 这样就既有bounce效果，又有透明度变化的效果了 */
-/* 但是如果opacity的执行时间和bounce的执行时间不同，那么动画在执行时可能会有问题 */
-.why-enter-active,
-.why-leave-active {
-  transition: opacity 1s ease;
-}
-
-.why-enter-active {
-  animation: bounce 1s ease;
-}
-
-.why-leave-active {
-  animation: bounce 1s ease reverse;
-}
-
-@keyframes bounce {
-  0% {
-    transform: scale(0);
+  #main {
+    width: 50vw;
+    height: 100vh;
+    margin: 40vh auto;
+    text-align: center;
   }
 
-  50% {
-    transform: scale(1.2);
+  .title {
+    display: inline-block;
   }
 
-  100% {
-    transform: scale(1);
+  .why-enter-from,
+  .why-leave-to {
+    opacity: 0;
   }
-}
 
+  /* 这样就既有bounce效果，又有透明度变化的效果了 */
+  /* 但是如果opacity的执行时间和bounce的执行时间不同，那么动画在执行时可能会有问题 */
+  .why-enter-active,
+  .why-leave-active {
+    transition: opacity 1s ease;
+  }
+
+  .why-enter-active {
+    animation: bounce 1s ease;
+  }
+
+  .why-leave-active {
+    animation: bounce 1s ease reverse;
+  }
+
+  @keyframes bounce {
+    0% {
+      transform: scale(0);
+    }
+
+    50% {
+      transform: scale(1.2);
+    }
+
+    100% {
+      transform: scale(1);
+    }
+  }
 </style>
